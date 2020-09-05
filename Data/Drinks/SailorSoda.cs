@@ -50,14 +50,14 @@ namespace BleakwindBuffet.Data.Drinks
             set => size = value;
         }
 
-        private SodaFlavor sodaFlavor = SodaFlavor.Cherry;
+        private SodaFlavor flavor = SodaFlavor.Cherry;
         /// <summary>
-        /// Gets and sets the soda flavor
+        /// Gets and sets the soda's flavor
         /// </summary>
-        public SodaFlavor SodaFlavor
+        public SodaFlavor Flavor
         {
-            get => sodaFlavor;
-            set => sodaFlavor = value;
+            get => flavor;
+            set => flavor = value;
         }
 
         private bool ice = true;
@@ -89,7 +89,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <returns>The name of the item</returns>
         public override string ToString()
         {
-            return $"{Size} {SodaFlavor} Sailor Soda";
+            return $"{Size} {Flavor} Sailor Soda";
         }
     }
 }
