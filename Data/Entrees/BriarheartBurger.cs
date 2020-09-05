@@ -18,7 +18,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// </summary>
         public double Price
         {
-            get => 6.32; 
+            get => 6.32;
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace BleakwindBuffet.Data.Entrees
         {
             get => ketchup;
             set => ketchup = value;
-            
+
         }
 
         private bool mustard = true;

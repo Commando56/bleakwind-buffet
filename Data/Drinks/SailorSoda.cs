@@ -69,7 +69,7 @@ namespace BleakwindBuffet.Data.Drinks
             get => ice;
             set => ice = value;
         }
-        
+
         /// <summary>
         /// Represents a list on which ingredients to hold
         /// </summary>
