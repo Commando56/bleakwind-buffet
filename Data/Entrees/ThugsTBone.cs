@@ -11,12 +11,12 @@ namespace BleakwindBuffet.Data.Entrees
     /// <summary>
     /// Represents an order of Thugs T-Bone
     /// </summary>
-    public class ThugsTBone
+    public class ThugsTBone : Entree, IOrderItem
     {
         /// <summary>
         /// Gets the price of the T-Bone
         /// </summary>
-        public double Price
+        public override double Price
         {
             get => 6.44;
         }
@@ -24,7 +24,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Gets the calories of the T-Bone
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get => 982;
         }
@@ -32,7 +32,7 @@ namespace BleakwindBuffet.Data.Entrees
         /// <summary>
         /// Represents a list on which ingredients to hold
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get => new List<string>();
         }

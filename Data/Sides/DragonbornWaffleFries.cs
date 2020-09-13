@@ -12,12 +12,12 @@ namespace BleakwindBuffet.Data.Sides
     /// <summary>
     /// Represents an order of Dragonborn Waffle Fries
     /// </summary>
-    public class DragonbornWaffleFries
+    public class DragonbornWaffleFries : Side, IOrderItem
     {
         /// <summary>
         /// Gets the price of the fries
         /// </summary>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -30,7 +30,7 @@ namespace BleakwindBuffet.Data.Sides
         /// <summary>
         /// Gets the calories of the fries
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -40,20 +40,10 @@ namespace BleakwindBuffet.Data.Sides
             }
         }
 
-        private Size size = Size.Small;
-        /// <summary>
-        /// Gets and sets the size of the fries
-        /// </summary>
-        public Size Size
-        {
-            get => size;
-            set => size = value;
-        }
-
         /// <summary>
         /// Represents a list on which ingredients to hold
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get => new List<string>();
         }

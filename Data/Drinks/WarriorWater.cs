@@ -12,12 +12,12 @@ namespace BleakwindBuffet.Data.Drinks
     /// <summary>
     /// Represents an order of Warrior Water
     /// </summary>
-    public class WarriorWater
+    public class WarriorWater : Drink, IOrderItem
     {
         /// <summary>
         /// Gets the price of the water
         /// </summary>
-        public double Price
+        public override double Price
         {
             get => 0.00;
         }
@@ -25,19 +25,9 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Gets the calories of the water
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get => 0;
-        }
-
-        private Size size = Size.Small;
-        /// <summary>
-        /// Gets and sets the size of the drink
-        /// </summary>
-        public Size Size
-        {
-            get => size;
-            set => size = value;
         }
 
         private bool ice = true;
@@ -63,7 +53,7 @@ namespace BleakwindBuffet.Data.Drinks
         /// <summary>
         /// Represents a list on which ingredients to hold
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {
