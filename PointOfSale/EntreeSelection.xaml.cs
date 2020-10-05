@@ -1,4 +1,10 @@
-﻿using BleakwindBuffet.Data.Entrees;
+﻿/*
+ * Author: Cole Kaster
+ * Class name: EntreeSelection.xaml.cs
+ * Purpose: Allows the user to select an entree
+ */
+
+using BleakwindBuffet.Data.Entrees;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +27,10 @@ namespace PointOfSale
     {
         private MainWindow main;
 
+        /// <summary>
+        /// Instantiates an EntreeSelection
+        /// </summary>
+        /// <param name="main">The main window</param>
         public EntreeSelection(MainWindow main)
         {
             InitializeComponent();

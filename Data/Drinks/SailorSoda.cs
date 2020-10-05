@@ -6,6 +6,7 @@
 
 using BleakwindBuffet.Data.Enums;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
@@ -47,7 +48,14 @@ namespace BleakwindBuffet.Data.Drinks
         public SodaFlavor Flavor
         {
             get => flavor;
-            set => flavor = value;
+            set
+            {
+                if (flavor != value)
+                {
+                    flavor = value;
+                    OnPropertiesChanged(new PropertyChangedEventArgs("Flavor"));
+                }
+            }
         }
 
         private bool ice = true;
@@ -57,7 +65,14 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice
         {
             get => ice;
-            set => ice = value;
+            set
+            {
+                if (ice != value)
+                {
+                    ice = value;
+                    OnPropertiesChanged(new PropertyChangedEventArgs("Ice"));
+                }
+            }
         }
 
         /// <summary>

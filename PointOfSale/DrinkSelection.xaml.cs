@@ -1,4 +1,10 @@
-﻿using BleakwindBuffet.Data.Drinks;
+﻿/*
+ * Author: Cole Kaster
+ * Class name: DrinkSelection.xaml.cs
+ * Purpose: Allows the user to select a drink
+ */
+
+using BleakwindBuffet.Data.Drinks;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +27,10 @@ namespace PointOfSale
     {
         private MainWindow main;
 
+        /// <summary>
+        /// Instantiates a DrinkSelection
+        /// </summary>
+        /// <param name="main">The main window</param>
         public DrinkSelection(MainWindow main)
         {
             InitializeComponent();

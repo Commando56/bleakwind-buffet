@@ -7,11 +7,40 @@ using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
 using Xunit;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
     public class FriedMiraakTests
     {
+        [Fact]
+        public void ImplementsNotifyPropertyInterface()
+        {
+            FriedMiraak fm = new FriedMiraak();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(fm);
+        }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            FriedMiraak fm = new FriedMiraak();
+
+            Assert.PropertyChanged(fm, "Size", () =>
+            {
+                fm.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(fm, "Size", () =>
+            {
+                fm.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(fm, "Size", () =>
+            {
+                fm.Size = Size.Small;
+            });
+        }
+
         [Fact]
         public void ShouldBeIOrderItem()
         {

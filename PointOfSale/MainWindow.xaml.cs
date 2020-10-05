@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Author: Cole Kaster
+ * Class name: MainWindow.xaml.cs
+ * Purpose: Represents the main window of the application
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +33,9 @@ namespace PointOfSale
         private DrinkSelection drinkSelection;
         private CustomizeItem customizeMenu;
 
+        /// <summary>
+        /// Instantiates the MainWindow
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -40,26 +49,42 @@ namespace PointOfSale
             windowControl.Content = selectionMenu;
         }
 
+        /// <summary>
+        /// Sets the window control to display the selection menu
+        /// </summary>
         public void OpenMainMenu()
         {
             windowControl.Content = selectionMenu;
         }
 
+        /// <summary>
+        /// Sets the window control to display the entree menu
+        /// </summary>
         public void OpenEntrees()
         {
             windowControl.Content = entreeSelection;
         }
 
+        /// <summary>
+        /// Sets the window control to display the side menu
+        /// </summary>
         public void OpenSides()
         {
             windowControl.Content = sideSelection;
         }
 
+        /// <summary>
+        /// Sets the window control to display the drink menu
+        /// </summary>
         public void OpenDrinks()
         {
             windowControl.Content = drinkSelection;
         }
 
+        /// <summary>
+        /// Sets the window control to display the customization of an item
+        /// </summary>
+        /// <param name="orderItem">Determines how to display the customization menu</param>
         public void CustomizeItem(IOrderItem orderItem)
         {
             customizeMenu.GenerateCustomizationOptions(orderItem);

@@ -4,6 +4,7 @@
  * Purpose: Test the Menu.cs class in the Data library
  */
 using System.Collections.Generic;
+using System.ComponentModel;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Entrees;

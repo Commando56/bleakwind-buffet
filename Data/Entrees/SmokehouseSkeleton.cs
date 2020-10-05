@@ -5,14 +5,17 @@
  */
 
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
     /// <summary>
     /// Represents an order of Smokehouse Skeleton
     /// </summary>
-    public class SmokehouseSkeleton : Entree, IOrderItem
+    public class SmokehouseSkeleton : Entree, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets the price of the combo
         /// </summary>
@@ -36,7 +39,14 @@ namespace BleakwindBuffet.Data.Entrees
         public bool SausageLink
         {
             get => sausageLink;
-            set => sausageLink = value;
+            set
+            {
+                if (sausageLink != value)
+                {
+                    sausageLink = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sausage"));
+                }
+            }
         }
 
         private bool egg = true;
@@ -46,7 +56,14 @@ namespace BleakwindBuffet.Data.Entrees
         public bool Egg
         {
             get => egg;
-            set => egg = value;
+            set
+            {
+                if (egg != value)
+                {
+                    egg = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Egg"));
+                }
+            }
 
         }
 
@@ -57,7 +74,14 @@ namespace BleakwindBuffet.Data.Entrees
         public bool HashBrowns
         {
             get => hashBrowns;
-            set => hashBrowns = value;
+            set
+            {
+                if (hashBrowns != value)
+                {
+                    hashBrowns = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("HashBrowns"));
+                }
+            }
         }
 
         private bool pancake = true;
@@ -67,7 +91,14 @@ namespace BleakwindBuffet.Data.Entrees
         public bool Pancake
         {
             get => pancake;
-            set => pancake = value;
+            set
+            {
+                if (pancake != value)
+                {
+                    pancake = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pancake"));
+                }
+            }
         }
 
         /// <summary>

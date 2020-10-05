@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Author: Cole Kaster
+ * Class name: SelectionMenu.xaml.cs
+ * Purpose: Allows user to pick an entree, side, or drink
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +26,10 @@ namespace PointOfSale
     {
         private MainWindow main;
 
+        /// <summary>
+        /// Instantiates a SelectionMenu
+        /// </summary>
+        /// <param name="main">The main window</param>
         public SelectionMenu(MainWindow main)
         {
             InitializeComponent();

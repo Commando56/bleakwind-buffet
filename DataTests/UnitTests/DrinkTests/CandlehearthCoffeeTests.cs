@@ -7,11 +7,88 @@ using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Enums;
 using Xunit;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
 {
     public class CandlehearthCoffeeTests
     {
+        [Fact]
+        public void ImplementsNotifyPropertyInterface()
+        {
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(cc);
+        }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+
+            Assert.PropertyChanged(cc, "Size", () =>
+            {
+                cc.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(cc, "Size", () =>
+            {
+                cc.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(cc, "Size", () =>
+            {
+                cc.Size = Size.Small;
+            });
+        }
+
+        [Fact]
+        public void ChangingIceNotifiesIceProperty()
+        {
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+
+            Assert.PropertyChanged(cc, "Ice", () =>
+            {
+                cc.Ice = true;
+            });
+
+            Assert.PropertyChanged(cc, "Ice", () =>
+            {
+                cc.Ice = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingCreamNotifiesCreamProperty()
+        {
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+
+            Assert.PropertyChanged(cc, "Room For Cream", () =>
+            {
+                cc.RoomForCream = true;
+            });
+
+            Assert.PropertyChanged(cc, "Room For Cream", () =>
+            {
+                cc.RoomForCream = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingDecafNotifiesDecafProperty()
+        {
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+
+            Assert.PropertyChanged(cc, "Decaf", () =>
+            {
+                cc.Decaf = true;
+            });
+
+            Assert.PropertyChanged(cc, "Decaf", () =>
+            {
+                cc.Decaf = false;
+            });
+        }
+
         [Fact]
         public void ShouldBeIOrderItem()
         {

@@ -6,13 +6,14 @@
 
 using BleakwindBuffet.Data.Enums;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
     /// <summary>
     /// Represents an order of Aretino Apple Juice
     /// </summary>
-    public class AretinoAppleJuice : Drink, IOrderItem
+    public class AretinoAppleJuice : Drink, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// Gets the price of the juice
@@ -47,7 +48,14 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice
         {
             get => ice;
-            set => ice = value;
+            set
+            {
+                if (ice != value)
+                {
+                    ice = value;
+                    OnPropertiesChanged(new PropertyChangedEventArgs("Ice"));
+                }
+            }
         }
 
         /// <summary>

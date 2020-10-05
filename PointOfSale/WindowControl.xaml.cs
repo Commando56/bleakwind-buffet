@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Author: Cole Kaster
+ * Class name: WindowControl.xaml.cs
+ * Purpose: Holds the selection menus being displayed
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,6 +24,9 @@ namespace PointOfSale
     /// </summary>
     public partial class WindowControl : UserControl
     {
+        /// <summary>
+        /// Instantiates a WindowControl
+        /// </summary>
         public WindowControl()
         {
             InitializeComponent();

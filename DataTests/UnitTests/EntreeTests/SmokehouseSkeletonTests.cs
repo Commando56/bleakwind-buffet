@@ -6,11 +6,83 @@
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using Xunit;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
     public class SmokehouseSkeletonTests
     {
+        [Fact]
+        public void ImplementsNotifyPropertyInterface()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(ss);
+        }
+
+        [Fact]
+        public void ChangingSausageNotifiesSausageProperty()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+
+            Assert.PropertyChanged(ss, "Sausage", () =>
+            {
+                ss.SausageLink = false;
+            });
+
+            Assert.PropertyChanged(ss, "Sausage", () =>
+            {
+                ss.SausageLink = true;
+            });
+        }
+
+        [Fact]
+        public void ChangingEggNotifiesEggProperty()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+
+            Assert.PropertyChanged(ss, "Egg", () =>
+            {
+                ss.Egg = false;
+            });
+
+            Assert.PropertyChanged(ss, "Egg", () =>
+            {
+                ss.Egg = true;
+            });
+        }
+
+        [Fact]
+        public void ChangingHashBrownsNotifiesHashBrownsProperty()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+
+            Assert.PropertyChanged(ss, "HashBrowns", () =>
+            {
+                ss.HashBrowns = false;
+            });
+
+            Assert.PropertyChanged(ss, "HashBrowns", () =>
+            {
+                ss.HashBrowns = true;
+            });
+        }
+
+        [Fact]
+        public void ChangingPancakeNotifiesPancakeProperty()
+        {
+            SmokehouseSkeleton ss = new SmokehouseSkeleton();
+
+            Assert.PropertyChanged(ss, "Pancake", () =>
+            {
+                ss.Pancake = false;
+            });
+
+            Assert.PropertyChanged(ss, "Pancake", () =>
+            {
+                ss.Pancake = true;
+            });
+        }
+
         [Fact]
         public void ShouldBeIOrderItem()
         {

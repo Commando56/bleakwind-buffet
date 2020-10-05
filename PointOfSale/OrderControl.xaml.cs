@@ -1,4 +1,10 @@
-﻿using BleakwindBuffet.Data;
+﻿/*
+ * Author: Cole Kaster
+ * Class name: OrderControl.xaml.cs
+ * Purpose: Represents an order
+ */
+
+using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +27,9 @@ namespace PointOfSale
     {
         //private List<IOrderItem> orderItems = new List<IOrderItem>();
 
+        /// <summary>
+        /// Instantiates an OrderControl
+        /// </summary>
         public OrderControl()
         {
             InitializeComponent();

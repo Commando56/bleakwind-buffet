@@ -6,11 +6,83 @@
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Entrees;
 using Xunit;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.EntreeTests
 {
     public class GardenOrcOmeletteTests
     {
+        [Fact]
+        public void ImplementsNotifyPropertyInterface()
+        {
+            GardenOrcOmelette goo = new GardenOrcOmelette();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(goo);
+        }
+
+        [Fact]
+        public void ChangingBroccoliNotifiesBroccoliProperty()
+        {
+            GardenOrcOmelette goo = new GardenOrcOmelette();
+
+            Assert.PropertyChanged(goo, "Broccoli", () =>
+            {
+                goo.Broccoli = false;
+            });
+
+            Assert.PropertyChanged(goo, "Broccoli", () =>
+            {
+                goo.Broccoli = true;
+            });
+        }
+
+        [Fact]
+        public void ChangingMushroomsNotifiesMushroomsProperty()
+        {
+            GardenOrcOmelette goo = new GardenOrcOmelette();
+
+            Assert.PropertyChanged(goo, "Mushrooms", () =>
+            {
+                goo.Mushrooms = false;
+            });
+
+            Assert.PropertyChanged(goo, "Mushrooms", () =>
+            {
+                goo.Mushrooms = true;
+            });
+        }
+
+        [Fact]
+        public void ChangingTomatoNotifiesTomatoProperty()
+        {
+            GardenOrcOmelette goo = new GardenOrcOmelette();
+
+            Assert.PropertyChanged(goo, "Tomato", () =>
+            {
+                goo.Tomato = false;
+            });
+
+            Assert.PropertyChanged(goo, "Tomato", () =>
+            {
+                goo.Tomato = true;
+            });
+        }
+
+        [Fact]
+        public void ChangingCheddarNotifiesCheddarProperty()
+        {
+            GardenOrcOmelette goo = new GardenOrcOmelette();
+
+            Assert.PropertyChanged(goo, "Cheddar", () =>
+            {
+                goo.Cheddar = false;
+            });
+
+            Assert.PropertyChanged(goo, "Cheddar", () =>
+            {
+                goo.Cheddar = true;
+            });
+        }
+
         [Fact]
         public void ShouldBeIOrderItem()
         {

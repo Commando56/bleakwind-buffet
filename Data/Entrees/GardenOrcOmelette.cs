@@ -5,14 +5,17 @@
  */
 
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Entrees
 {
     /// <summary>
     /// Represents an order of Garden Orc Omelette
     /// </summary>
-    public class GardenOrcOmelette : Entree, IOrderItem
+    public class GardenOrcOmelette : Entree, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets the price of the omelette
         /// </summary>
@@ -36,7 +39,14 @@ namespace BleakwindBuffet.Data.Entrees
         public bool Broccoli
         {
             get => broccoli;
-            set => broccoli = value;
+            set
+            {
+                if (broccoli != value)
+                {
+                    broccoli = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Broccoli"));
+                }
+            }
         }
 
         private bool mushrooms = true;
@@ -46,7 +56,14 @@ namespace BleakwindBuffet.Data.Entrees
         public bool Mushrooms
         {
             get => mushrooms;
-            set => mushrooms = value;
+            set
+            {
+                if (mushrooms != value)
+                {
+                    mushrooms = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Mushrooms"));
+                }
+            }
 
         }
 
@@ -57,7 +74,14 @@ namespace BleakwindBuffet.Data.Entrees
         public bool Tomato
         {
             get => tomato;
-            set => tomato = value;
+            set
+            {
+                if (tomato != value)
+                {
+                    tomato = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tomato"));
+                }
+            }
         }
 
         private bool cheddar = true;
@@ -67,7 +91,14 @@ namespace BleakwindBuffet.Data.Entrees
         public bool Cheddar
         {
             get => cheddar;
-            set => cheddar = value;
+            set
+            {
+                if (cheddar != value)
+                {
+                    cheddar = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Cheddar"));
+                }
+            }
         }
 
         /// <summary>

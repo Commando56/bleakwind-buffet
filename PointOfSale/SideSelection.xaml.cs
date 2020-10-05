@@ -1,4 +1,10 @@
-﻿using BleakwindBuffet.Data.Sides;
+﻿/*
+ * Author: Cole Kaster
+ * Class name: SideSelection.xaml.cs
+ * Purpose: Allows the user to select a side
+ */
+
+using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +27,10 @@ namespace PointOfSale
     {
         private MainWindow main;
 
+        /// <summary>
+        /// Instantiates a SideSelection
+        /// </summary>
+        /// <param name="main">The main window</param>
         public SideSelection(MainWindow main)
         {
             InitializeComponent();

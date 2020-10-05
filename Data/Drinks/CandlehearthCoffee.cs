@@ -6,13 +6,14 @@
 
 using BleakwindBuffet.Data.Enums;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Drinks
 {
     /// <summary>
     /// Represents an order of Candlehearth Coffee
     /// </summary>
-    public class CandlehearthCoffee : Drink, IOrderItem
+    public class CandlehearthCoffee : Drink, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// Gets the price of the coffee
@@ -47,7 +48,14 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Ice
         {
             get => ice;
-            set => ice = value;
+            set
+            {
+                if (ice != value)
+                {
+                    ice = value;
+                    OnPropertiesChanged(new PropertyChangedEventArgs("Ice"));
+                }
+            }
         }
 
         private bool roomForCream = false;
@@ -57,7 +65,14 @@ namespace BleakwindBuffet.Data.Drinks
         public bool RoomForCream
         {
             get => roomForCream;
-            set => roomForCream = value;
+            set
+            {
+                if (roomForCream != value)
+                {
+                    roomForCream = value;
+                    OnPropertiesChanged(new PropertyChangedEventArgs("Room For Cream"));
+                }
+            }
         }
 
         private bool decaf = false;
@@ -67,7 +82,14 @@ namespace BleakwindBuffet.Data.Drinks
         public bool Decaf
         {
             get => decaf;
-            set => decaf = value;
+            set
+            {
+                if (decaf != value)
+                {
+                    decaf = value;
+                    OnPropertiesChanged(new PropertyChangedEventArgs("Decaf"));
+                }
+            }
         }
 
         /// <summary>

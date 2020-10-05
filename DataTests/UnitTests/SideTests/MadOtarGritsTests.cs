@@ -7,11 +7,40 @@ using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
 using Xunit;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.DataTests.UnitTests.SideTests
 {
     public class MadOtarGritsTests
     {
+        [Fact]
+        public void ImplementsNotifyPropertyInterface()
+        {
+            MadOtarGrits mog = new MadOtarGrits();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(mog);
+        }
+
+        [Fact]
+        public void ChangingSizeNotifiesSizeProperty()
+        {
+            MadOtarGrits mog = new MadOtarGrits();
+
+            Assert.PropertyChanged(mog, "Size", () =>
+            {
+                mog.Size = Size.Medium;
+            });
+
+            Assert.PropertyChanged(mog, "Size", () =>
+            {
+                mog.Size = Size.Large;
+            });
+
+            Assert.PropertyChanged(mog, "Size", () =>
+            {
+                mog.Size = Size.Small;
+            });
+        }
+
         [Fact]
         public void ShouldBeIOrderItem()
         {
