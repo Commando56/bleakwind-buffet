@@ -6,6 +6,7 @@
 
 using BleakwindBuffet.Data.Enums;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Sides
 {
@@ -14,6 +15,7 @@ namespace BleakwindBuffet.Data.Sides
     /// </summary>
     public class MadOtarGrits : Side, IOrderItem
     {
+        private double price = 1.22;
         /// <summary>
         /// Gets the price of the grits
         /// </summary>
@@ -21,12 +23,14 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (Size == Size.Small) return 1.22;
-                else if (Size == Size.Medium) return 1.58;
-                else return 1.93;
+                if (Size == Size.Small) price = 1.22;
+                else if (Size == Size.Medium) price = 1.58;
+                else price = 1.93;
+                return price;
             }
         }
 
+        private uint calories = 105;
         /// <summary>
         /// Gets the calories of the grits
         /// </summary>
@@ -34,18 +38,20 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (Size == Size.Small) return 105;
-                else if (Size == Size.Medium) return 142;
-                else return 179;
+                if (Size == Size.Small) calories = 105;
+                else if (Size == Size.Medium) calories = 142;
+                else calories = 179;
+                return calories;
             }
         }
 
+        private List<string> specialInstructions = new List<string>();
         /// <summary>
         /// Represents a list on which ingredients to hold
         /// </summary>
         public override List<string> SpecialInstructions
         {
-            get => new List<string>();
+            get => specialInstructions;
         }
 
         /// <summary>

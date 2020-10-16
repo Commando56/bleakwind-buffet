@@ -17,6 +17,8 @@ namespace BleakwindBuffet.Data.Entrees
     /// </summary>
     public abstract class Entree
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// The price of the entree
         /// </summary>

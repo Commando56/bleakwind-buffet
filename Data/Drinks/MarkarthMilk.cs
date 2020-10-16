@@ -15,6 +15,9 @@ namespace BleakwindBuffet.Data.Drinks
     /// </summary>
     public class MarkarthMilk : Drink, IOrderItem
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private double price = 1.05;
         /// <summary>
         /// Gets the price of the milk
         /// </summary>
@@ -22,12 +25,14 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (Size == Size.Small) return 1.05;
-                else if (Size == Size.Medium) return 1.11;
-                else return 1.22;
+                if (Size == Size.Small) price = 1.05;
+                else if (Size == Size.Medium) price = 1.11;
+                else price = 1.22;
+                return price;
             }
         }
 
+        private uint calories = 56;
         /// <summary>
         /// Gets the calories of the milk
         /// </summary>
@@ -35,9 +40,10 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (Size == Size.Small) return 56;
-                else if (Size == Size.Medium) return 72;
-                else return 93;
+                if (Size == Size.Small) calories = 56;
+                else if (Size == Size.Medium) calories = 72;
+                else calories = 93;
+                return calories;
             }
         }
 
@@ -53,7 +59,8 @@ namespace BleakwindBuffet.Data.Drinks
                 if (ice != value)
                 {
                     ice = value;
-                    OnPropertiesChanged(new PropertyChangedEventArgs("Ice"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 }
             }
         }

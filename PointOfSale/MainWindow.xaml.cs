@@ -50,6 +50,25 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// Calls the OrderControl's add item
+        /// </summary>
+        /// <param name="item"></param>
+        public void AddItemToOrder(IOrderItem item)
+        {
+            orderControl.AddItem(item);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="orderItem"></param>
+        public void OpenModifyItem(IOrderItem orderItem)
+        {
+            customizeMenu.ModifyItem(orderItem);
+            windowControl.Content = customizeMenu;
+        }
+
+        /// <summary>
         /// Sets the window control to display the selection menu
         /// </summary>
         public void OpenMainMenu()
@@ -90,7 +109,5 @@ namespace PointOfSale
             customizeMenu.GenerateCustomizationOptions(orderItem);
             windowControl.Content = customizeMenu;
         }
-
-
     }
 }

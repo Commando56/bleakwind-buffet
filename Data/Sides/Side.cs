@@ -28,10 +28,14 @@ namespace BleakwindBuffet.Data.Sides
             get => size;
             set
             {
-                if(size != value)
+                if (size != value)
                 {
                     size = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
                 }
             }
         }
@@ -42,12 +46,18 @@ namespace BleakwindBuffet.Data.Sides
         /// <value>
         /// In US dollars
         /// </value>
-        public abstract double Price { get; }
+        public abstract double Price
+        {
+            get;
+        }
 
         /// <summary>
         /// The calories of the side
         /// </summary>
-        public abstract uint Calories { get; }
+        public abstract uint Calories 
+        {
+            get;
+        }
 
         /// <summary>
         /// Special instructions to prepare the side

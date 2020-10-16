@@ -34,14 +34,16 @@
             <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel x:Name="stack" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="addButton" Grid.Column="2" Grid.Row="2">Add to Order</Button>
-        <Button x:Name="backButton" Grid.Column="1" Grid.Row="2" Click="GoBack">Back</Button>
+        <Button x:Name="addButton" Click="AddToOrder" Grid.Column="2" Grid.Row="4">Add to Order</Button>
+        <Button x:Name="backButton" Grid.Column="1" Grid.Row="4" Click="GoBack">Back</Button>
         <TextBlock x:Name="topText" Grid.Column="1" Grid.Row="0"/>
-        <ComboBox Name="sizeBox" Grid.Column="1" Grid.Row="0" Visibility="Collapsed" FontSize="20" 
+        <ComboBox Name="sizeBox" Grid.Column="1" Grid.Row="2" Visibility="Collapsed" FontSize="20" 
                   ItemsSource="{Binding Source={StaticResource dataFromSize}}" SelectedItem="{Binding Path=Size}"/>
-        <ComboBox Name="flavorBox" Grid.Column="1" Grid.Row="1" Visibility="Collapsed" FontSize="20"
+        <ComboBox Name="flavorBox" Grid.Column="1" Grid.Row="3" Visibility="Collapsed" FontSize="20"
                   ItemsSource="{Binding Source={StaticResource dataFromFlavors}}" SelectedItem="{Binding Path=Flavor}"/>
     </Grid>
 </UserControl>

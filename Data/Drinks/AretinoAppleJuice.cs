@@ -15,6 +15,9 @@ namespace BleakwindBuffet.Data.Drinks
     /// </summary>
     public class AretinoAppleJuice : Drink, IOrderItem, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private double price = 0.62;
         /// <summary>
         /// Gets the price of the juice
         /// </summary>
@@ -22,12 +25,14 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (Size == Size.Small) return 0.62;
-                else if (Size == Size.Medium) return 0.87;
-                else return 1.01;
+                if (Size == Size.Small) price = 0.62;
+                else if (Size == Size.Medium) price = 0.87;
+                else price = 1.01;
+                return price;
             }
         }
 
+        private uint calories = 44;
         /// <summary>
         /// Gets the calories of the juice
         /// </summary>
@@ -35,9 +40,10 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (Size == Size.Small) return 44;
-                else if (Size == Size.Medium) return 88;
-                else return 132;
+                if (Size == Size.Small) calories = 44;
+                else if (Size == Size.Medium) calories = 88;
+                else calories = 132;
+                return calories;
             }
         }
 
@@ -53,7 +59,8 @@ namespace BleakwindBuffet.Data.Drinks
                 if (ice != value)
                 {
                     ice = value;
-                    OnPropertiesChanged(new PropertyChangedEventArgs("Ice"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 }
             }
         }

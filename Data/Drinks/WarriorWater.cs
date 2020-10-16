@@ -15,6 +15,8 @@ namespace BleakwindBuffet.Data.Drinks
     /// </summary>
     public class WarriorWater : Drink, IOrderItem
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets the price of the water
         /// </summary>
@@ -43,7 +45,8 @@ namespace BleakwindBuffet.Data.Drinks
                 if (ice != value)
                 {
                     ice = value;
-                    OnPropertiesChanged(new PropertyChangedEventArgs("Ice"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 }
             }
         }
@@ -60,7 +63,8 @@ namespace BleakwindBuffet.Data.Drinks
                 if (lemon != value)
                 {
                     lemon = value;
-                    OnPropertiesChanged(new PropertyChangedEventArgs("Lemon"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Lemon"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 }
             }
         }

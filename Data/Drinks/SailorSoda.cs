@@ -15,6 +15,9 @@ namespace BleakwindBuffet.Data.Drinks
     /// </summary>
     public class SailorSoda : Drink, IOrderItem
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private double price = 1.42;
         /// <summary>
         /// Gets the price of the soda
         /// </summary>
@@ -22,12 +25,14 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (Size == Size.Small) return 1.42;
-                else if (Size == Size.Medium) return 1.74;
-                else return 2.07;
+                if (Size == Size.Small) price = 1.42;
+                else if (Size == Size.Medium) price = 1.74;
+                else price = 2.07;
+                return price;
             }
         }
 
+        private uint calories = 117;
         /// <summary>
         /// Gets the calories of the soda
         /// </summary>
@@ -35,9 +40,10 @@ namespace BleakwindBuffet.Data.Drinks
         {
             get
             {
-                if (Size == Size.Small) return 117;
-                else if (Size == Size.Medium) return 153;
-                else return 205;
+                if (Size == Size.Small) calories = 117;
+                else if (Size == Size.Medium) calories = 153;
+                else calories = 205;
+                return calories;
             }
         }
 
@@ -53,7 +59,9 @@ namespace BleakwindBuffet.Data.Drinks
                 if (flavor != value)
                 {
                     flavor = value;
-                    OnPropertiesChanged(new PropertyChangedEventArgs("Flavor"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Flavor"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
                 }
             }
         }
@@ -70,7 +78,8 @@ namespace BleakwindBuffet.Data.Drinks
                 if (ice != value)
                 {
                     ice = value;
-                    OnPropertiesChanged(new PropertyChangedEventArgs("Ice"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Ice"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 }
             }
         }

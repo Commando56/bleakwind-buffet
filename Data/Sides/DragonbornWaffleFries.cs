@@ -6,6 +6,7 @@
 
 using BleakwindBuffet.Data.Enums;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BleakwindBuffet.Data.Sides
 {
@@ -14,6 +15,7 @@ namespace BleakwindBuffet.Data.Sides
     /// </summary>
     public class DragonbornWaffleFries : Side, IOrderItem
     {
+        private double price = 0.42;
         /// <summary>
         /// Gets the price of the fries
         /// </summary>
@@ -21,12 +23,14 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (Size == Size.Small) return 0.42;
-                else if (Size == Size.Medium) return 0.76;
-                else return 0.96;
+                if (Size == Size.Small) price = 0.42;
+                else if (Size == Size.Medium) price = 0.76;
+                else price = 0.96;
+                return price;
             }
         }
 
+        private uint calories = 77;
         /// <summary>
         /// Gets the calories of the fries
         /// </summary>
@@ -34,18 +38,20 @@ namespace BleakwindBuffet.Data.Sides
         {
             get
             {
-                if (Size == Size.Small) return 77;
-                else if (Size == Size.Medium) return 89;
-                else return 100;
+                if (Size == Size.Small) calories = 77;
+                else if (Size == Size.Medium) calories = 89;
+                else calories = 100;
+                return calories;
             }
         }
 
+        private List<string> specialInstructions = new List<string>();
         /// <summary>
         /// Represents a list on which ingredients to hold
         /// </summary>
         public override List<string> SpecialInstructions
         {
-            get => new List<string>();
+            get => specialInstructions;
         }
 
         /// <summary>

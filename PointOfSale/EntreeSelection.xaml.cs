@@ -74,7 +74,7 @@ namespace PointOfSale
 
         private void OpenThugsTBone(object sender, RoutedEventArgs e)
         {
-            //Add To Order
+            main.AddItemToOrder(new ThugsTBone());
         }
     }
 }

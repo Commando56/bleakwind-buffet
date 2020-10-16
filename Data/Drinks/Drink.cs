@@ -19,15 +19,6 @@ namespace BleakwindBuffet.Data.Drinks
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        /// Used to invoke the PropertyChanged event handler
-        /// </summary>
-        /// <param name="e">The event arguments</param>
-        public void OnPropertiesChanged(PropertyChangedEventArgs e)
-        {
-            PropertyChanged?.Invoke(this, e);
-        }
-
         private Size size;
         /// <summary>
         /// The size of the drink
@@ -40,7 +31,11 @@ namespace BleakwindBuffet.Data.Drinks
                 if(size != value)
                 {
                     size = value;
-                    OnPropertiesChanged(new PropertyChangedEventArgs("Size"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Size"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Price"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Calories"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToString"));
                 }
             }
         }

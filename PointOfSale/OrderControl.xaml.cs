@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +26,8 @@ namespace PointOfSale
     /// </summary>
     public partial class OrderControl : UserControl
     {
-        //private List<IOrderItem> orderItems = new List<IOrderItem>();
+        private MainWindow main;
+        private Order order;
 
         /// <summary>
         /// Instantiates an OrderControl
@@ -33,16 +35,33 @@ namespace PointOfSale
         public OrderControl()
         {
             InitializeComponent();
+            order = new Order();
+            this.DataContext = order;
+            main = Application.Current.Windows[0] as MainWindow;
         }
 
-        /*public void AddOrderItem(IOrderItem item)
+        private void CancelOrder(object sender, RoutedEventArgs e)
         {
-            orderItems.Add(item);
+            order.Clear();
         }
 
-        public void ClearOrder()
+        private void RemoveItem(object sender, RoutedEventArgs e)
         {
-            orderItems.Clear();
-        }*/
+            order.Remove((IOrderItem)ordersListBox.SelectedItem);
+        }
+
+        private void ModifyItem(object sender, RoutedEventArgs e)
+        {
+            main.OpenModifyItem((IOrderItem)ordersListBox.SelectedItem);
+        }
+
+        /// <summary>
+        /// Adds an item to the order
+        /// </summary>
+        /// <param name="item"></param>
+        public void AddItem(IOrderItem item)
+        {
+            order.Add(item);
+        }
     }
 }
