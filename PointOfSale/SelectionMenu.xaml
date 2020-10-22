@@ -21,10 +21,13 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="0" FontSize="30" TextAlignment="Center">Select a Category</TextBlock>
         <Button Click="OpenEntree"  Grid.Column="1" Grid.Row="2" FontSize="30">Entrees</Button>
         <Button Click="OpenSide" Grid.Column="1" Grid.Row="4" FontSize="30">Sides</Button>
         <Button Click="OpenDrink" Grid.Column="1" Grid.Row="6" FontSize="30">Drinks</Button>
+        <Button Click="OpenCombo" Grid.Column="1" Grid.Row="8" FontSize ="30">Combo</Button>
     </Grid>
 </UserControl>

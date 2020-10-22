@@ -44,32 +44,32 @@ namespace PointOfSale
 
         private void OpenBriarheartBurger(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new BriarheartBurger());
+            main.CustomizeItem(new BriarheartBurger(), null);
         }
 
         private void OpenDoubleDraugr(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new DoubleDraugr());
+            main.CustomizeItem(new DoubleDraugr(), null);
         }
 
         private void OpenThalmorTriple(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new ThalmorTriple());
+            main.CustomizeItem(new ThalmorTriple(), null);
         }
 
         private void OpenSmokehouseSkeleton(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new SmokehouseSkeleton());
+            main.CustomizeItem(new SmokehouseSkeleton(), null);
         }
 
         private void OpenGardenOrcOmelette(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new GardenOrcOmelette());
+            main.CustomizeItem(new GardenOrcOmelette(), null);
         }
 
         private void OpenPhillyPoacher(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new PhillyPoacher());
+            main.CustomizeItem(new PhillyPoacher(), null);
         }
 
         private void OpenThugsTBone(object sender, RoutedEventArgs e)

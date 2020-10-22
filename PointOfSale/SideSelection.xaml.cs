@@ -44,22 +44,22 @@ namespace PointOfSale
 
         private void OpenVokunSalad(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new VokunSalad());
+            main.CustomizeItem(new VokunSalad(), null);
         }
 
         private void OpenFriedMiraak(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new FriedMiraak());
+            main.CustomizeItem(new FriedMiraak(), null);
         }
 
         private void OpenMadOtarGrits(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new MadOtarGrits());
+            main.CustomizeItem(new MadOtarGrits(), null);
         }
 
         private void OpenDragonbornWaffleFries(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new DragonbornWaffleFries());
+            main.CustomizeItem(new DragonbornWaffleFries(), null);
         }
     }
 }

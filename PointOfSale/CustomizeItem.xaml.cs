@@ -33,6 +33,7 @@ namespace PointOfSale
         private string type;
         private IOrderItem thisItem;
         private bool modify = false;
+        private Combo combo;
 
         /// <summary>
         /// Instantiates a CustomizeItem
@@ -46,9 +47,14 @@ namespace PointOfSale
 
         private void GoBack(object sender, RoutedEventArgs e)
         {
-            if (type.Equals("Entree")) main.OpenEntrees();
-            else if (type.Equals("Drink")) main.OpenDrinks();
-            else main.OpenSides();
+            if (combo == null)
+            {
+                if (type.Equals("Entree")) main.OpenEntrees();
+                else if (type.Equals("Drink")) main.OpenDrinks();
+                else main.OpenSides();
+            }
+            else main.OpenCombo(combo);
+
             stack.Children.Clear();
             sizeBox.Visibility = Visibility.Collapsed;
             flavorBox.Visibility = Visibility.Collapsed;
@@ -57,14 +63,24 @@ namespace PointOfSale
 
         private void AddToOrder(object sender, RoutedEventArgs e)
         {
-            if (!modify)
+            if (!modify && combo == null)
             {
                 main.AddItemToOrder(thisItem);
             }
+            if (combo == null)
+            {
+                if (type.Equals("Entree")) main.OpenEntrees();
+                else if (type.Equals("Drink")) main.OpenDrinks();
+                else main.OpenSides();  
+            }
+            else
+            {
+                if (type.Equals("Entree")) combo.Entree = thisItem as Entree;
+                else if (type.Equals("Drink")) combo.Drink = thisItem as Drink;
+                else combo.Side = thisItem as Side;
+                main.OpenCombo(combo);
+            }
 
-            if (type.Equals("Entree")) main.OpenEntrees();
-            else if (type.Equals("Drink")) main.OpenDrinks();
-            else main.OpenSides();
             stack.Children.Clear();
             sizeBox.Visibility = Visibility.Collapsed;
             flavorBox.Visibility = Visibility.Collapsed;
@@ -75,8 +91,9 @@ namespace PointOfSale
         /// Generates the window elements based on the provided IOrderItem
         /// </summary>
         /// <param name="item">The item of which to customize</param>
-        public void GenerateCustomizationOptions(IOrderItem item)
+        public void GenerateCustomizationOptions(IOrderItem item, Combo combo)
         {
+            this.combo = combo;
             modify = false;
             topText.FontSize = 20;
             if(item.ToString().Equals("Briarheart Burger"))
@@ -342,7 +359,7 @@ namespace PointOfSale
                 sausageBox.IsChecked = true;
                 sausageBox.Content = "Sausage";
                 sausageBox.FontSize = 16;
-                Binding sausageBinding = new Binding("Sausage");
+                Binding sausageBinding = new Binding("SausageLink");
                 sausageBinding.Source = ss;
                 sausageBinding.Mode = BindingMode.TwoWay;
                 sausageBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
@@ -628,7 +645,7 @@ namespace PointOfSale
                 creamBox.IsChecked = false;
                 creamBox.Content = "Cream";
                 creamBox.FontSize = 20;
-                Binding creamBinding = new Binding("Room For Cream");
+                Binding creamBinding = new Binding("RoomForCream");
                 creamBinding.Source = cc;
                 creamBinding.Mode = BindingMode.TwoWay;
                 creamBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
@@ -687,8 +704,9 @@ namespace PointOfSale
         /// Opens the menu with an already existing IOrderItem
         /// </summary>
         /// <param name="item">The item being modified</param>
-        public void ModifyItem(IOrderItem item)
+        public void ModifyItem(IOrderItem item, Combo combo)
         {
+            this.combo = combo;
             modify = true;
             topText.FontSize = 20;
             if (item.ToString().Equals("Briarheart Burger"))
@@ -954,7 +972,7 @@ namespace PointOfSale
                 sausageBox.IsChecked = true;
                 sausageBox.Content = "Sausage";
                 sausageBox.FontSize = 16;
-                Binding sausageBinding = new Binding("Sausage");
+                Binding sausageBinding = new Binding("SausageLink");
                 sausageBinding.Source = ss;
                 sausageBinding.Mode = BindingMode.TwoWay;
                 sausageBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
@@ -1240,7 +1258,7 @@ namespace PointOfSale
                 creamBox.IsChecked = false;
                 creamBox.Content = "Cream";
                 creamBox.FontSize = 20;
-                Binding creamBinding = new Binding("Room For Cream");
+                Binding creamBinding = new Binding("RoomForCream");
                 creamBinding.Source = cc;
                 creamBinding.Mode = BindingMode.TwoWay;
                 creamBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;

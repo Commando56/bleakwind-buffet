@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="PointOfSale.ComboSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PointOfSale"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="640">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="entree" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock x:Name="side" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1"/>
+        <TextBlock x:Name="drink" VerticalAlignment="Center" Grid.Column="5" Grid.Row="1"/>
+        <Button Click="OpenBriarheartBurger" FontSize="16" Grid.Column="1" Grid.Row="3">Briarheart Burger</Button>
+        <Button Click="OpenDoubleDraugr" FontSize="16" Grid.Column="1" Grid.Row="4">Double Draugr</Button>
+        <Button Click="OpenThalmorTriple" FontSize="16" Grid.Column="1" Grid.Row="5">Thalmor Triple</Button>
+        <Button Click="OpenGardenOrcOmelette" FontSize="16" Grid.Column="1" Grid.Row="6">Garden Orc Omelette</Button>
+        <Button Click="OpenPhillyPoacher" FontSize="16" Grid.Column="1" Grid.Row="7">Philly Poacher</Button>
+        <Button Click="OpenSmokehouseSkeleton" FontSize="16" Grid.Column="1" Grid.Row="8">Smokehouse Skeleton</Button>
+        <Button Click="OpenThugsTBone" FontSize="16" Grid.Column="1" Grid.Row="9">Thugs T Bone</Button>
+        <Button Click="OpenDragonbornWaffleFries" FontSize="14" Grid.Column="3" Grid.Row="3">Dragonborn Waffle Fries</Button>
+        <Button Click="OpenFriedMiraak" FontSize="16" Grid.Column="3" Grid.Row="4">Fried Miraak</Button>
+        <Button Click="OpenMadOtarGrits" FontSize="16" Grid.Column="3" Grid.Row="5">Mad Otar Grits</Button>
+        <Button Click="OpenVokunSalad" FontSize="16" Grid.Column="3" Grid.Row="6">Vokun Salad</Button>
+        <Button Click="OpenAretinoAppleJuice" FontSize="16" Grid.Column="5" Grid.Row="3">Aretino Apple Juice</Button>
+        <Button Click="OpenCandlehearthCoffee" FontSize="16" Grid.Column="5" Grid.Row="4">Candlehearth Coffee</Button>
+        <Button Click="OpenMarkarthMilk" FontSize="16" Grid.Column="5" Grid.Row="5">Markarth Milk</Button>
+        <Button Click="OpenSailorSoda" FontSize="16" Grid.Column="5" Grid.Row="6">Sailor Soda</Button>
+        <Button Click="OpenWarriorWater" FontSize="16" Grid.Column="5" Grid.Row="7">Warrior Water</Button>
+        <Button Click="CancelCombo" FontSize="16" Grid.Column="3" Grid.Row="9">Cancel Combo</Button>
+        <Button Click="CreateCombo" FontSize="16" Grid.Column="5" Grid.Row="9">Create Combo</Button>
+        <Button Click="ModifyEntree" FontSize="16" Grid.Column="1" Grid.Row="11">Modify Entree</Button>
+        <Button Click="ModifySide" FontSize="16" Grid.Column="3" Grid.Row="11">Modify Side</Button>
+        <Button Click="ModifyDrink" FontSize="16" Grid.Column="5" Grid.Row="11">Modify Drink</Button>
+    </Grid>
+</UserControl>

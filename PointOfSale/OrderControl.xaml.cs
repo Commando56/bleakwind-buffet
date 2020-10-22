@@ -7,6 +7,7 @@
 using BleakwindBuffet.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
@@ -42,7 +43,13 @@ namespace PointOfSale
 
         private void CancelOrder(object sender, RoutedEventArgs e)
         {
-            order.Clear();
+            order = new Order();
+            this.DataContext = order;
+        }
+
+        private void CompleteOrder(object sender, RoutedEventArgs e)
+        {
+            main.OpenPaymentOptions(order);
         }
 
         private void RemoveItem(object sender, RoutedEventArgs e)
@@ -52,7 +59,7 @@ namespace PointOfSale
 
         private void ModifyItem(object sender, RoutedEventArgs e)
         {
-            main.OpenModifyItem((IOrderItem)ordersListBox.SelectedItem);
+            main.OpenModifyItem((IOrderItem)ordersListBox.SelectedItem, null);
         }
 
         /// <summary>
@@ -62,6 +69,15 @@ namespace PointOfSale
         public void AddItem(IOrderItem item)
         {
             order.Add(item);
+        }
+
+        /// <summary>
+        /// Creates a new order
+        /// </summary>
+        public void NewOrder()
+        {
+            order = new Order();
+            this.DataContext = order;
         }
     }
 }

@@ -26,34 +26,31 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=ToString}"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=Price}"/>
-                        <ListView ItemsSource="{Binding SpecialInstructions}" Grid.Row="1" Grid.Column="0">
+                        <TextBlock Grid.Row="0" Text="{Binding}"/>
+                        <TextBlock Grid.Row="1" Text="{Binding Path=Price}"/>
+                        <ListView ItemsSource="{Binding SpecialInstructions}" Grid.Row="2">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}"/>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Button Click="ModifyItem"  Grid.Row="2" Grid.Column="0">Modify Item</Button>
-                        <Button Click="RemoveItem"  Grid.Row="3" Grid.Column="0">Remove From Order</Button>
+                        <Button Click="ModifyItem"  Grid.Row="3">Modify Item</Button>
+                        <Button Click="RemoveItem"  Grid.Row="4">Remove From Order</Button>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <Button x:Name="cancelButton" Grid.ColumnSpan="2" Grid.Row="5" Click="CancelOrder">Cancel Order</Button>
-        <Button x:Name="completeButton" Grid.ColumnSpan="2"  Grid.Row="6">Complete Order</Button>
+        <Button x:Name="completeButton" Grid.ColumnSpan="2"  Grid.Row="6" Click="CompleteOrder">Complete Order</Button>
         <TextBlock Grid.Row="2" Text="Subtotal:"/>
         <TextBlock TextAlignment="Right" Grid.Row="2" Grid.Column="1" Text="{Binding Path=Subtotal}"/>
         <TextBlock Grid.Row="3" Text="Tax:"/>

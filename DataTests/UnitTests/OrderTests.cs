@@ -149,15 +149,6 @@ namespace BleakwindBuffet.DataTests.UnitTests
         }
 
         [Fact]
-        public void ShouldClearOrder()
-        {
-            Order order = new Order();
-            order.Add(new BriarheartBurger());
-            order.Clear();
-            Assert.Empty(order);
-        }
-
-        [Fact]
         public void ShouldGetCorrectContains()
         {
             Order order = new Order();

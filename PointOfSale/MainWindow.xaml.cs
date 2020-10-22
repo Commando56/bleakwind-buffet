@@ -32,6 +32,9 @@ namespace PointOfSale
         private SideSelection sideSelection;
         private DrinkSelection drinkSelection;
         private CustomizeItem customizeMenu;
+        private PaymentOptions paymentOptions;
+        private RegisterDisplay registerDisplay;
+        private ComboSelection comboSelection;
 
         /// <summary>
         /// Instantiates the MainWindow
@@ -50,6 +53,35 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// Opens the cash register menu
+        /// </summary>
+        /// <param name="order">The current order</param>
+        public void OpenRegister(Order order)
+        {
+            registerDisplay = new RegisterDisplay(order, this);
+            windowControl.Content = registerDisplay;
+        }
+
+        /// <summary>
+        /// Opens a combo menu
+        /// </summary>
+        public void OpenCombo(Combo combo)
+        {
+            comboSelection = new ComboSelection(this, combo);
+            windowControl.Content = comboSelection;
+        }
+
+        /// <summary>
+        /// Displays the payment options
+        /// </summary>
+        /// <param name="order">The current order</param>
+        public void OpenPaymentOptions(Order order)
+        {
+            paymentOptions = new PaymentOptions(order, this);
+            windowControl.Content = paymentOptions;
+        }
+
+        /// <summary>
         /// Calls the OrderControl's add item
         /// </summary>
         /// <param name="item"></param>
@@ -59,12 +91,20 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// 
+        /// Creates a new order
+        /// </summary>
+        public void NewOrder()
+        {
+            orderControl.NewOrder();
+        }
+
+        /// <summary>
+        /// Opens a modify menu
         /// </summary>
         /// <param name="orderItem"></param>
-        public void OpenModifyItem(IOrderItem orderItem)
+        public void OpenModifyItem(IOrderItem orderItem, Combo combo)
         {
-            customizeMenu.ModifyItem(orderItem);
+            customizeMenu.ModifyItem(orderItem, combo);
             windowControl.Content = customizeMenu;
         }
 
@@ -104,9 +144,9 @@ namespace PointOfSale
         /// Sets the window control to display the customization of an item
         /// </summary>
         /// <param name="orderItem">Determines how to display the customization menu</param>
-        public void CustomizeItem(IOrderItem orderItem)
+        public void CustomizeItem(IOrderItem orderItem, Combo combo)
         {
-            customizeMenu.GenerateCustomizationOptions(orderItem);
+            customizeMenu.GenerateCustomizationOptions(orderItem, combo);
             windowControl.Content = customizeMenu;
         }
     }

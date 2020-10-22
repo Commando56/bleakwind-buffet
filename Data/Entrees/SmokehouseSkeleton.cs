@@ -44,7 +44,7 @@ namespace BleakwindBuffet.Data.Entrees
                 if (sausageLink != value)
                 {
                     sausageLink = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Sausage"));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SausageLink"));
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SpecialInstructions"));
                 }
             }

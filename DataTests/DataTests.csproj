@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\PointOfSale\PointOfSale.csproj" />
   </ItemGroup>
 
 </Project>

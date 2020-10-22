@@ -44,27 +44,27 @@ namespace PointOfSale
 
         private void OpenSailorSoda(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new SailorSoda());
+            main.CustomizeItem(new SailorSoda(), null);
         }
 
         private void OpenMarkarthMilk(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new MarkarthMilk());
+            main.CustomizeItem(new MarkarthMilk(), null);
         }
 
         private void OpenAretinoAppleJuice(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new AretinoAppleJuice());
+            main.CustomizeItem(new AretinoAppleJuice(), null);
         }
 
         private void OpenCandlehearthCoffee(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new CandlehearthCoffee());
+            main.CustomizeItem(new CandlehearthCoffee(), null);
         }
 
         private void OpenWarriorWater(object sender, RoutedEventArgs e)
         {
-            main.CustomizeItem(new WarriorWater());
+            main.CustomizeItem(new WarriorWater(), null);
         }
     }
 }

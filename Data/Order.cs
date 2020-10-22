@@ -140,16 +140,19 @@ namespace BleakwindBuffet.Data
                     }
                     break;
                 case NotifyCollectionChangedAction.Reset:
-                    break;
+                    throw new NotImplementedException("NotifyCollectionChangedAction.Reset not supported");
             }
         }
 
         private void CollectionItemChangedListener(object sender, PropertyChangedEventArgs e)
         {
-            OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
-            OnPropertyChanged(new PropertyChangedEventArgs("Tax"));
-            OnPropertyChanged(new PropertyChangedEventArgs("Total"));
-            OnPropertyChanged(new PropertyChangedEventArgs("Calories"));
+            if (e.PropertyName == "Calories" || e.PropertyName == "Price")
+            {
+                OnPropertyChanged(new PropertyChangedEventArgs("Subtotal"));
+                OnPropertyChanged(new PropertyChangedEventArgs("Tax"));
+                OnPropertyChanged(new PropertyChangedEventArgs("Total"));
+                OnPropertyChanged(new PropertyChangedEventArgs("Calories"));
+            }
         }
 
         /// <summary>

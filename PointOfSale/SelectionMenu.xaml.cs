@@ -51,5 +51,10 @@ namespace PointOfSale
             main.OpenDrinks();
         }
 
+        private void OpenCombo(object sender, RoutedEventArgs e)
+        {
+            main.OpenCombo(new BleakwindBuffet.Data.Combo(null, null, null));
+        }
+
     }
 }
