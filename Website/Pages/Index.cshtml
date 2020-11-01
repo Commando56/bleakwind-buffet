@@ -1,0 +1,116 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    BleakwindBuffet.Data.Enums.Size[] sizes = { BleakwindBuffet.Data.Enums.Size.Small, BleakwindBuffet.Data.Enums.Size.Medium,
+        BleakwindBuffet.Data.Enums.Size.Large };
+    BleakwindBuffet.Data.Enums.SodaFlavor[] flavors = { BleakwindBuffet.Data.Enums.SodaFlavor.Blackberry, BleakwindBuffet.Data.Enums.SodaFlavor.Cherry,
+        BleakwindBuffet.Data.Enums.SodaFlavor.Grapefruit, BleakwindBuffet.Data.Enums.SodaFlavor.Lemon, BleakwindBuffet.Data.Enums.SodaFlavor.Peach,
+        BleakwindBuffet.Data.Enums.SodaFlavor.Watermelon };
+    BleakwindBuffet.Data.Drinks.Drink[] drinks = { new AretinoAppleJuice(), new CandlehearthCoffee(), new MarkarthMilk(), new SailorSoda(), new WarriorWater() };
+}
+
+@using BleakwindBuffet.Data
+@using BleakwindBuffet.Data.Entrees
+@using BleakwindBuffet.Data.Sides
+@using BleakwindBuffet.Data.Drinks
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Bleakwind Buffet</h1>
+    <p>
+        We at Bleakwind Buffet are proud to bring you authentic fantasy meals straight from the world of Skyrim.
+        Shake the blood off your sword and sake your thirst with one of our old-fashioned sailor sodas.
+        Hack into a Smokehouse Skeleton with your dagger. Or vanquish the the mighty Thalmor Triple Burger!
+        You’ve had a hard adventure and earned your loot, so spend it with us!
+    </p>
+</div>
+
+<div class="combo">Any combination of an entree, side and drink can be combined for a $1 discount!<br><br></div>
+
+<h2 class="menu-type">Entrees</h2>
+@foreach (Entree entree in Menu.Entrees())
+{
+    <div class="entree">
+        <h3 class="name">@entree.ToString()</h3>
+        <div class="price">$@entree.Price</div>
+        <div class="calories">@entree.Calories calories</div>
+    </div>
+    <br>
+}
+
+<br>
+<h2 class="menu-type">Sides</h2>
+@foreach (Side side in Menu.Sides())
+{
+    if (side.Size == sizes[0])
+    {
+        <div class="side">
+
+            @if (side.ToString().Contains("Salad"))
+            {
+                <h3 class="name">Vokun Salad</h3>
+            }
+            @if (side.ToString().Contains("Grits"))
+            {
+                <h3 class="name">Mad Otar Grits</h3>
+            }
+            @if (side.ToString().Contains("Fries"))
+            {
+                <h3 class="name">Dragonborn Waffle Fries</h3>
+            }
+            @if (side.ToString().Contains("Miraak"))
+            {
+                <h3 class="name">Fried Miraak</h3>
+            }
+            @foreach (BleakwindBuffet.Data.Enums.Size size in sizes)
+            {
+                side.Size = size;
+                <div class="size">@size:</div>
+                <div class="price">$@side.Price</div>
+                <div class="calories">@side.Calories calories</div>
+            }
+        </div>
+        <br>
+    }
+}
+
+<br>
+<h2 class="menu-type">Drinks</h2>
+@foreach (Drink drink in drinks)
+{
+    <div class="drink">
+        @if (drink.ToString().Contains("Juice"))
+        {
+            <h3 class="name">Aretino Apple Juice</h3>
+        }
+        @if (drink.ToString().Contains("Coffee"))
+        {
+            <h3 class="name">Candlehearth Coffee</h3>
+        }
+        @if (drink.ToString().Contains("Milk"))
+        {
+            <h3 class="name">Markarth Milk</h3>
+        }
+        @if (drink.ToString().Contains("Soda") && drink.ToString().Contains("Cherry"))
+        {
+            <h3 class="name">Sailor Soda</h3>
+            <div class="flavor-text">Flavors:</div>
+            @foreach (BleakwindBuffet.Data.Enums.SodaFlavor flavor in flavors)
+            {
+                <div class="flavor">@flavor</div>
+            }
+        }
+        @if (drink.ToString().Contains("Warrior"))
+        {
+            <h3 class="name">Warrior Water</h3>
+        }
+        @foreach (BleakwindBuffet.Data.Enums.Size size in sizes)
+        {
+            drink.Size = size;
+            <div class="size">@size:</div>
+            <div class="price">$@drink.Price</div>
+            <div class="calories">@drink.Calories calories</div>
+        }
+    </div>
+    <br>
+}
