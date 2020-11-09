@@ -5,6 +5,7 @@
  */
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using BleakwindBuffet.Data;
 using BleakwindBuffet.Data.Drinks;
 using BleakwindBuffet.Data.Entrees;
@@ -19,6 +20,71 @@ namespace BleakwindBuffet.DataTests.UnitTests
     /// </summary>
     public class MenuTests
     {
+        [Fact]
+        public void ShouldGetCorrectSearch()
+        {
+            IEnumerable<IOrderItem> items = new List<IOrderItem>();
+            items = Menu.Search(items, "Frie");
+            Assert.NotEmpty(items);
+            Assert.Collection(items,
+                item => Assert.IsType<DragonbornWaffleFries>(item),
+                item => Assert.IsType<FriedMiraak>(item)
+                );
+            items = Menu.Search(items, "Soda");
+            Assert.Collection(items,
+                item => Assert.IsType<SailorSoda>(item));
+            items = Menu.Search(items, "Burger");
+            Assert.Collection(items,
+                item => Assert.IsType<BriarheartBurger>(item));
+        }
+
+        [Fact]
+        public void ShouldFilterCorrectTypes()
+        {
+            IEnumerable<IOrderItem> items = new List<IOrderItem>();
+            items = Menu.Search(items, "er");
+            string[] types = { "Entrees", "Sides" };
+            items = Menu.FilterByType(items, true, false, true);
+            Assert.NotEmpty(items);
+            Assert.Collection(items,
+                item => Assert.IsType<BriarheartBurger>(item),
+                item => Assert.IsType<PhillyPoacher>(item),
+                item => Assert.IsType<SailorSoda>(item),
+                item => Assert.IsType<WarriorWater>(item)
+                );
+        }
+
+        [Fact]
+        public void ShouldFilterCorrectCalories()
+        {
+            IEnumerable<IOrderItem> items = new List<IOrderItem>();
+            items = Menu.Search(items, "Water");
+            items = Menu.FilterByCalories(items, 0, 100);
+            Assert.Collection(items,
+                item => Assert.IsType<WarriorWater>(item)
+                );
+            items = Menu.Search(items, "Burger");
+            items = Menu.FilterByCalories(items, 700, 800);
+            Assert.Collection(items,
+                item => Assert.IsType<BriarheartBurger>(item)
+                );
+            items = Menu.FilterByCalories(items, 0, 100);
+            Assert.Empty(items);
+        }
+
+        [Fact]
+        public void ShouldFilterCorrectPrice()
+        {
+            IEnumerable<IOrderItem> items = new List<IOrderItem>();
+            items = Menu.Search(items, "Burger");
+            items = Menu.FilterByPrice(items, 0.00, 8.00);
+            Assert.Collection(items,
+                item => Assert.IsType<BriarheartBurger>(item)
+                );
+            items = Menu.FilterByPrice(items, 0.00, 1.00);
+            Assert.Empty(items);
+        }
+
         [Fact]
         public void ShouldGetAllEntrees()
         {

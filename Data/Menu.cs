@@ -10,6 +10,7 @@ using BleakwindBuffet.Data.Enums;
 using BleakwindBuffet.Data.Sides;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BleakwindBuffet.Data
@@ -337,6 +338,212 @@ namespace BleakwindBuffet.Data
             largeWater.Size = Size.Large;
             menu.Add(largeWater);
             return menu;
+        }
+
+        /// <summary>
+        /// Searchs the menu for the provided terms
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="terms"></param>
+        /// <returns>an IEnumerable</returns>
+        public static IEnumerable<IOrderItem> Search(IEnumerable<IOrderItem> items, string terms)
+        {
+            List<IOrderItem> menuItems = new List<IOrderItem>();
+
+            if (terms != null)
+            {
+                foreach (IOrderItem item in FullMenu())
+                {
+                    if (item is Entree)
+                    {
+                        if (item.ToString().Contains(terms))
+                        {
+                            menuItems.Add(item);
+                        }
+                    }
+                    else if (item is Side side)
+                    {
+                        if (side.Size == Size.Small && item.ToString().Contains(terms))
+                        {
+                            menuItems.Add(item);
+                        }
+                    }
+                    else if (item is Drink drink)
+                    {
+                        if (drink.Size == Size.Small && item.ToString().Contains(terms))
+                        {
+                            if (drink is SailorSoda soda)
+                            {
+                                if (soda.Flavor == SodaFlavor.Cherry)
+                                {
+                                    menuItems.Add(item);
+                                }
+                            }
+                            else
+                            {
+                                menuItems.Add(item);
+                            }
+                        }
+                    }
+                }
+                return menuItems;
+            }
+            else
+            {
+                foreach (IOrderItem item in Entrees())
+                {
+                    menuItems.Add(item);
+                }
+                menuItems.Add(new DragonbornWaffleFries());
+                menuItems.Add(new FriedMiraak());
+                menuItems.Add(new MadOtarGrits());
+                menuItems.Add(new VokunSalad());
+                menuItems.Add(new AretinoAppleJuice());
+                menuItems.Add(new CandlehearthCoffee());
+                menuItems.Add(new MarkarthMilk());
+                menuItems.Add(new SailorSoda());
+                menuItems.Add(new WarriorWater());
+                return menuItems;
+            }
+        }
+
+        /// <summary>
+        /// Filters the search by type
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="types"></param>
+        /// <returns></returns>
+        public static IEnumerable<IOrderItem> FilterByType(IEnumerable<IOrderItem> items, bool entrees, bool sides, bool drinks)
+        {
+            if (entrees == false && sides == false && drinks == false)
+            {
+                return items;
+            }
+            else
+            {
+                List<IOrderItem> menuItems = new List<IOrderItem>();
+
+                if (entrees)
+                {
+                    foreach (IOrderItem item in items)
+                    {
+                        if (item is Entree) menuItems.Add(item);
+                    }
+                }
+                if (sides)
+                {
+                    foreach (IOrderItem item in items)
+                    {
+                        if (item is Side side)
+                        {
+                            if (side.Size == Size.Small) menuItems.Add(item);
+                        }
+                    }
+                }
+                if (drinks)
+                {
+                    foreach (IOrderItem item in items)
+                    {
+                        if (item is Drink drink)
+                        {
+                            if (drink.Size == Size.Small)
+                            {
+                                if (item is SailorSoda soda)
+                                {
+                                    if (soda.Flavor == SodaFlavor.Cherry)
+                                    {
+                                        menuItems.Add(item);
+                                    }
+                                }
+                                else
+                                {
+                                    menuItems.Add(item);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return menuItems;
+            }
+        }
+
+        /// <summary>
+        /// Filters the search by calories
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static IEnumerable<IOrderItem> FilterByCalories(IEnumerable<IOrderItem> items, int? min, int? max)
+        {
+            if ((min == null && max == null) || (min == 0 && max == 0)) return items;
+
+            var results = new List<IOrderItem>();
+
+            if (min == null)
+            {
+                foreach (IOrderItem item in items)
+                {
+                    if (item.Calories <= max) results.Add(item);
+                }
+                return results;
+            }
+
+            if (max == null)
+            {
+                foreach (IOrderItem item in items)
+                {
+                    if (item.Calories >= min) results.Add(item);
+                }
+                return results;
+            }
+
+            foreach (IOrderItem item in items)
+            {
+                if (item.Calories >= min && item.Calories <= max) results.Add(item);
+            }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Filters the search by price
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static IEnumerable<IOrderItem> FilterByPrice(IEnumerable<IOrderItem> items, double? min, double? max)
+        {
+            if ((min == null && max == null) || (min == 0 && max == 0)) return items;
+
+            var results = new List<IOrderItem>();
+
+            if (min == null)
+            {
+                foreach (IOrderItem item in items)
+                {
+                    if (item.Price <= max) results.Add(item);
+                }
+                return results;
+            }
+
+            if (max == null)
+            {
+                foreach (IOrderItem item in items)
+                {
+                    if (item.Price >= min) results.Add(item);
+                }
+                return results;
+            }
+
+            foreach (IOrderItem item in items)
+            {
+                if (item.Price >= min && item.Price <= max) results.Add(item);
+            }
+
+            return results;
         }
     }
 }
