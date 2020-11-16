@@ -22,6 +22,11 @@ namespace BleakwindBuffet.Data
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string Description
+        {
+            get => "Any entree, side, and drink combination";
+        }
+
         private Entree entree;
         /// <summary>
         /// The combo's entree

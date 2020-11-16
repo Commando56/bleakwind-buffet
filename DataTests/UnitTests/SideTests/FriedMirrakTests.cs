@@ -21,6 +21,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         }
 
         [Fact]
+        public void ShouldGetCorrectDescription()
+        {
+            FriedMiraak fm = new FriedMiraak();
+            Assert.Equal("Perfectly prepared hash brown pancakes.", fm.Description);
+        }
+
+        [Fact]
         public void ChangingSizeNotifiesSizeProperty()
         {
             FriedMiraak fm = new FriedMiraak();

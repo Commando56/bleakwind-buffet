@@ -17,6 +17,14 @@ namespace BleakwindBuffet.Data.Entrees
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
+        /// Gets the description of the burger
+        /// </summary>
+        public string Description
+        {
+            get => "Double patty burger on a brioche bun. Comes with ketchup, mustard, pickle, cheese, tomato, lettuce, and mayo.";
+        }
+
+        /// <summary>
         /// Gets the price of the burger
         /// </summary>
         public override double Price

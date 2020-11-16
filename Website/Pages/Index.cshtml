@@ -64,23 +64,32 @@
         and
         <input name="PriceMax" type="number" min="0" step="0.01" value="@Model.PriceMax" />
     </div>
-
 </form>
+<br />
 
-<div id="results">
-    @foreach (IOrderItem item in @Model.MenuItems)
-    {
-        @if (item is Entree)
+<div class="flex-columns">
+    <div class="entree">
+        <h2>Entrees</h2>
+        @foreach (IOrderItem item in @Model.MenuItems)
         {
-            <div class="entree">
+            @if (item is Entree)
+            {
                 <h3 class="name">@item.ToString()</h3>
-                <div class="price">$@item.Price</div>
-                <div class="calories">@item.Calories</div>
-            </div>
+                <p class="description">@item.Description</p>
+                <p class="price">$@item.Price</p>
+                <p class="calories">@item.Calories calories</p>
+
+            }
         }
-        else if (item is Side side)
+    </div>
+    <br/>
+    <div class="side">
+        <h2>Sides</h2>
+        @foreach (IOrderItem item in Model.MenuItems)
         {
-            <div class="side">
+            if (item is Side side)
+            {
+
                 @if (item is VokunSalad)
                 {
                     <h3 class="name">Vokun Salad</h3>
@@ -97,53 +106,64 @@
                 {
                     <h3 class="name">Fried Miraak</h3>
                 }
+                <div class="description">@item.Description</div>
                 @foreach (BleakwindBuffet.Data.Enums.Size size in sizes)
                 {
                     side.Size = size;
-                    <div class="size">@size:</div>
-                    <div class="price">$@side.Price</div>
-                    <div class="calories">@side.Calories calories</div>
+                    <p class="size">@size:</p>
+                    <p class="price">$@side.Price</p>
+                    <p class="calories">@side.Calories calories</p>
                 }
-            </div>
+            }
         }
-        else if (item is Drink drink)
+    </div>
+    <br />
+    <div class="drink">
+        <h2>Drinks</h2>
+        @foreach (IOrderItem item in Model.MenuItems)
         {
-            <div class="drink">
+            if (item is Drink drink)
+            {
                 @if (item is AretinoAppleJuice)
                 {
                     <h3 class="name">Aretino Apple Juice</h3>
+                    <p class="description">@item.Description</p>
                 }
                 @if (item is CandlehearthCoffee)
                 {
                     <h3 class="name">Candlehearth Coffee</h3>
+                    <p class="description">@item.Description</p>
                 }
                 @if (item is MarkarthMilk)
                 {
                     <h3 class="name">Markarth Milk</h3>
+                    <p class="description">@item.Description</p>
                 }
                 @if (item is SailorSoda)
                 {
                     <h3 class="name">Sailor Soda</h3>
-                    <div class="flavor-text">Flavors:</div>
+                    <p class="description">@item.Description</p>
+                    <p class="flavor-text">Flavors:</p>
                     @foreach (BleakwindBuffet.Data.Enums.SodaFlavor flavor in flavors)
                     {
-                        <div class="flavor">@flavor</div>
+                        <p class="flavor">@flavor</p>
                     }
                 }
                 @if (item is WarriorWater)
                 {
                     <h3 class="name">Warrior Water</h3>
+                    <p class="description">@item.Description</p>
                 }
                 @foreach (BleakwindBuffet.Data.Enums.Size size in sizes)
                 {
                     drink.Size = size;
-                    <div class="size">@size:</div>
-                    <div class="price">$@drink.Price</div>
-                    <div class="calories">@drink.Calories calories</div>
+                    <p class="size">@size:</p>
+                    <p class="price">$@drink.Price</p>
+                    <p class="calories">@drink.Calories calories</p>
                 }
-            </div>
-        }
-        <br>
-    }
-</div>
 
+            }
+        }
+    </div>
+    <br>
+</div>

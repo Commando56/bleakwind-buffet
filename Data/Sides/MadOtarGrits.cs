@@ -15,6 +15,14 @@ namespace BleakwindBuffet.Data.Sides
     /// </summary>
     public class MadOtarGrits : Side, IOrderItem
     {
+        /// <summary>
+        /// Gets the description of the grits
+        /// </summary>
+        public string Description
+        {
+            get => "Cheesey Grits.";
+        }
+
         private double price = 1.22;
         /// <summary>
         /// Gets the price of the grits

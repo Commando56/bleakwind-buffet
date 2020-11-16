@@ -21,6 +21,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.DrinkTests
         }
 
         [Fact]
+        public void ShouldGetCorrectDescription()
+        {
+            CandlehearthCoffee cc = new CandlehearthCoffee();
+            Assert.Equal("Fair trade, fresh ground dark roast coffee.", cc.Description);
+        }
+
+        [Fact]
         public void ChangingSizeNotifiesSizeProperty()
         {
             CandlehearthCoffee cc = new CandlehearthCoffee();

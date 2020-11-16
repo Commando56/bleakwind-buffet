@@ -21,6 +21,13 @@ namespace BleakwindBuffet.DataTests.UnitTests.SideTests
         }
 
         [Fact]
+        public void ShouldGetCorrectDescription()
+        {
+            DragonbornWaffleFries dwf = new DragonbornWaffleFries();
+            Assert.Equal("Crispy fried potato waffle fries.", dwf.Description);
+        }
+
+        [Fact]
         public void ChangingSizeNotifiesSizeProperty()
         {
             DragonbornWaffleFries dwf = new DragonbornWaffleFries();

@@ -16,6 +16,11 @@ namespace BleakwindBuffet.Data
     public interface IOrderItem
     {
         /// <summary>
+        /// The description of the item
+        /// </summary>
+        string Description { get; }
+
+        /// <summary>
         /// The price of the item
         /// </summary>
         /// <value>
@@ -31,6 +36,6 @@ namespace BleakwindBuffet.Data
         /// <summary>
         /// The instructions on how to make the item
         /// </summary>
-        List<string> SpecialInstructions { get; }
+        List<string> SpecialInstructions { get; }       
     }
 }

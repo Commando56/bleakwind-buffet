@@ -71,6 +71,17 @@ body {
 }
 
 /*Bleakwind Buffet Updates*/
+.flex-columns {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 490px) {
+    .flex-columns {
+        flex-direction: column;
+    }
+}
+
 .combo {
     text-decoration: underline;
 }
@@ -102,4 +113,8 @@ body {
 
 .menu-type {
     color: darkslateblue;
+}
+
+.description{
+    font-weight: bold;
 }

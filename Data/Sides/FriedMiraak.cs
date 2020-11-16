@@ -15,6 +15,14 @@ namespace BleakwindBuffet.Data.Sides
     /// </summary>
     public class FriedMiraak : Side, IOrderItem
     {
+        /// <summary>
+        /// Gets the description of the pancakes
+        /// </summary>
+        public string Description
+        {
+            get => "Perfectly prepared hash brown pancakes.";
+        }
+
         private double price = 1.78;
         /// <summary>
         /// Gets the price of the pancakes

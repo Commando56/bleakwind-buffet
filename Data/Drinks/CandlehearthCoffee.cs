@@ -17,6 +17,14 @@ namespace BleakwindBuffet.Data.Drinks
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Gets the description of the coffee
+        /// </summary>
+        public string Description
+        {
+            get => "Fair trade, fresh ground dark roast coffee.";
+        }
+
         private double price = 0.75;
         /// <summary>
         /// Gets the price of the coffee

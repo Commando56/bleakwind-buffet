@@ -24,6 +24,25 @@ namespace BleakwindBuffet.DataTests.UnitTests
         public void ShouldGetCorrectSearch()
         {
             IEnumerable<IOrderItem> items = new List<IOrderItem>();
+            items = Menu.Search(items, null);
+            Assert.Collection(items,
+                item => Assert.IsType<BriarheartBurger>(item),
+                item => Assert.IsType<DoubleDraugr>(item),
+                item => Assert.IsType<GardenOrcOmelette>(item),
+                item => Assert.IsType<PhillyPoacher>(item),
+                item => Assert.IsType<SmokehouseSkeleton>(item),
+                item => Assert.IsType<ThalmorTriple>(item),
+                item => Assert.IsType<ThugsTBone>(item),
+                item => Assert.IsType<DragonbornWaffleFries>(item),
+                item => Assert.IsType<FriedMiraak>(item),
+                item => Assert.IsType<MadOtarGrits>(item),
+                item => Assert.IsType<VokunSalad>(item),
+                item => Assert.IsType<AretinoAppleJuice>(item),
+                item => Assert.IsType<CandlehearthCoffee>(item),
+                item => Assert.IsType<MarkarthMilk>(item),
+                item => Assert.IsType<SailorSoda>(item),
+                item => Assert.IsType<WarriorWater>(item)
+                );
             items = Menu.Search(items, "Frie");
             Assert.NotEmpty(items);
             Assert.Collection(items,
@@ -42,8 +61,27 @@ namespace BleakwindBuffet.DataTests.UnitTests
         public void ShouldFilterCorrectTypes()
         {
             IEnumerable<IOrderItem> items = new List<IOrderItem>();
+            items = Menu.Search(items, null);
+            items = Menu.FilterByType(items, false, false, false);
+            Assert.Collection(items,
+                item => Assert.IsType<BriarheartBurger>(item),
+                item => Assert.IsType<DoubleDraugr>(item),
+                item => Assert.IsType<GardenOrcOmelette>(item),
+                item => Assert.IsType<PhillyPoacher>(item),
+                item => Assert.IsType<SmokehouseSkeleton>(item),
+                item => Assert.IsType<ThalmorTriple>(item),
+                item => Assert.IsType<ThugsTBone>(item),
+                item => Assert.IsType<DragonbornWaffleFries>(item),
+                item => Assert.IsType<FriedMiraak>(item),
+                item => Assert.IsType<MadOtarGrits>(item),
+                item => Assert.IsType<VokunSalad>(item),
+                item => Assert.IsType<AretinoAppleJuice>(item),
+                item => Assert.IsType<CandlehearthCoffee>(item),
+                item => Assert.IsType<MarkarthMilk>(item),
+                item => Assert.IsType<SailorSoda>(item),
+                item => Assert.IsType<WarriorWater>(item)
+                );
             items = Menu.Search(items, "er");
-            string[] types = { "Entrees", "Sides" };
             items = Menu.FilterByType(items, true, false, true);
             Assert.NotEmpty(items);
             Assert.Collection(items,
@@ -58,6 +96,26 @@ namespace BleakwindBuffet.DataTests.UnitTests
         public void ShouldFilterCorrectCalories()
         {
             IEnumerable<IOrderItem> items = new List<IOrderItem>();
+            items = Menu.Search(items, null);
+            items = Menu.FilterByCalories(items, null, null);
+            Assert.Collection(items,
+                item => Assert.IsType<BriarheartBurger>(item),
+                item => Assert.IsType<DoubleDraugr>(item),
+                item => Assert.IsType<GardenOrcOmelette>(item),
+                item => Assert.IsType<PhillyPoacher>(item),
+                item => Assert.IsType<SmokehouseSkeleton>(item),
+                item => Assert.IsType<ThalmorTriple>(item),
+                item => Assert.IsType<ThugsTBone>(item),
+                item => Assert.IsType<DragonbornWaffleFries>(item),
+                item => Assert.IsType<FriedMiraak>(item),
+                item => Assert.IsType<MadOtarGrits>(item),
+                item => Assert.IsType<VokunSalad>(item),
+                item => Assert.IsType<AretinoAppleJuice>(item),
+                item => Assert.IsType<CandlehearthCoffee>(item),
+                item => Assert.IsType<MarkarthMilk>(item),
+                item => Assert.IsType<SailorSoda>(item),
+                item => Assert.IsType<WarriorWater>(item)
+                );
             items = Menu.Search(items, "Water");
             items = Menu.FilterByCalories(items, 0, 100);
             Assert.Collection(items,
@@ -76,6 +134,26 @@ namespace BleakwindBuffet.DataTests.UnitTests
         public void ShouldFilterCorrectPrice()
         {
             IEnumerable<IOrderItem> items = new List<IOrderItem>();
+            items = Menu.Search(items, null);
+            items = Menu.FilterByPrice(items, null, null);
+            Assert.Collection(items,
+                item => Assert.IsType<BriarheartBurger>(item),
+                item => Assert.IsType<DoubleDraugr>(item),
+                item => Assert.IsType<GardenOrcOmelette>(item),
+                item => Assert.IsType<PhillyPoacher>(item),
+                item => Assert.IsType<SmokehouseSkeleton>(item),
+                item => Assert.IsType<ThalmorTriple>(item),
+                item => Assert.IsType<ThugsTBone>(item),
+                item => Assert.IsType<DragonbornWaffleFries>(item),
+                item => Assert.IsType<FriedMiraak>(item),
+                item => Assert.IsType<MadOtarGrits>(item),
+                item => Assert.IsType<VokunSalad>(item),
+                item => Assert.IsType<AretinoAppleJuice>(item),
+                item => Assert.IsType<CandlehearthCoffee>(item),
+                item => Assert.IsType<MarkarthMilk>(item),
+                item => Assert.IsType<SailorSoda>(item),
+                item => Assert.IsType<WarriorWater>(item)
+                );
             items = Menu.Search(items, "Burger");
             items = Menu.FilterByPrice(items, 0.00, 8.00);
             Assert.Collection(items,
